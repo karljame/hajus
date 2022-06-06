@@ -1,16 +1,12 @@
 <template>
   <Head title="Weather" />
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
-      <div class="bg-white overflow-hidden shadow-sm rounded-lg">
-        <div class="p-6 bg-white border-b border-gray-200">
-          <div class="text-2xl">Koht: {{ data.name }} </div>
-          <div class="text-2xl">Ilm: {{ data.weather[0].main }}</div>
-          <div class="text-2xl">Temperatuur: {{ data.main.temp }}</div>
-          <div class="text-2xl">Tundub nagu: {{data.main.feels_like}}</div>
-          <div class="text-2xl">Tuule kiirus: {{data.wind.speed}}</div>
-        </div>
-      </div>
-    </div>
+    <div class="flex items-center font-semibold gap-2" v-if="data">
+    <img :src="weatherIcon" alt="" />
+    <p>{{ data.name }}</p>
+    <p><span class="font-normal">temp: </span>{{data.main.temp}}℃</p>
+    <p><span class="font-normal">feels like: </span>{{data.main.feels_like}}℃</p>
+    <p><span class="font-normal">Description: </span>{{data.weather[0].description}}</p>
+  </div>
 </template>
 <script>
 export default {
