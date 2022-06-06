@@ -29,12 +29,15 @@ class MarkerController extends Controller
     ]);
     return redirect()->back();
   }
-  public function update(Request $request, $id)
-  {
+  public function update(Request $request, $id){
+
     $marker = Marker::findOrFail($id);
+
     $marker->update($request->all());
+
     return redirect("/googlemaps");
-  }
+}
+
   public function delete(Request $request, $id){
     $marker =Marker::where('id',$id)->first();
 
