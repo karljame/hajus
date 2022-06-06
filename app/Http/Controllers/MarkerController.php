@@ -36,9 +36,13 @@ class MarkerController extends Controller
     return redirect("/googlemaps");
   }
   public function delete(Request $request, $id){
-    $marker = Marker::find($id);
-    $marker->delete();
-    return redirect("/googlemaps");
+    $marker =Marker::where('id',$id)->first();
+
+    if($marker != null){
+      $marker->delete();
+      return redirect("/googlemaps");
+    } 
+ 
 }
 
 }
