@@ -14,8 +14,8 @@ set('keep_releases', 2);
 host('tak19jame.itmajakas.ee')
     ->setHostname('tak19jame.itmajakas.ee')
     ->set('http_user', 'virt83021')
-    ->set('deploy_path', '~/domeenid/tak19jame.itmajakas.ee/hajus')
-    ->set('branch', 'master');
+    ->set('deploy_path', '~/domeenid/www.tak19jame.itmajakas.ee/hajus')
+    ->set('branch', 'dev');
 
 // Tasks
 set('repository', 'git@github.com:karljame/hajus.git');
@@ -33,8 +33,7 @@ task('build:node', function () {
 task('deploy', [
     'deploy:prepare',
     'deploy:vendors',
-    'artisan:stor
-    age:link',
+    'artisan:storage:link',
     'artisan:view:cache',
     'artisan:config:cache',
     'build:node',
@@ -43,4 +42,3 @@ task('deploy', [
     'artisan:cache:clear'
 ]);
 after('deploy:failed', 'deploy:unlock');
-    
