@@ -5,20 +5,20 @@ namespace Deployer;
 require 'recipe/laravel.php';
 
 // Project name
-set('application', 'hajusrakendused');
-set('remote_user', 'virt83023'); //virt...
-set('http_user', 'virt83023');
+set('application', 'hajusrakendus');
+set('remote_user', 'virt83021'); //virt...
+set('http_user', 'virt83021');
 set('keep_releases', 2);
 
 // Hosts
-host('tak19pyyding.itmajakas.ee')
-    ->setHostname('tak19pyyding.itmajakas.ee')
-    ->set('http_user', 'virt83023')
-    ->set('deploy_path', '~/domeenid/www.tak19pyyding.itmajakas.ee/hajus')
-    ->set('branch', 'dev');
+host('tak19jame.itmajakas.ee')
+    ->setHostname('tak19jame.itmajakas.ee')
+    ->set('http_user', 'virt83021')
+    ->set('deploy_path', '~/domeenid/tak19jame.itmajakas.ee/hajus')
+    ->set('branch', 'master');
 
 // Tasks
-set('repository', 'git@github.com:fs-s/hajus.git');
+set('repository', 'git@github.com:karljame/hajus.git');
 //Restart opcache
 task('opcache:clear', function () {
     run('killall php80-cgi || true');
@@ -33,7 +33,8 @@ task('build:node', function () {
 task('deploy', [
     'deploy:prepare',
     'deploy:vendors',
-    'artisan:storage:link',
+    'artisan:stor
+    age:link',
     'artisan:view:cache',
     'artisan:config:cache',
     'build:node',
@@ -42,3 +43,4 @@ task('deploy', [
     'artisan:cache:clear'
 ]);
 after('deploy:failed', 'deploy:unlock');
+    
