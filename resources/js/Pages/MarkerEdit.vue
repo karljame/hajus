@@ -10,7 +10,7 @@
             <input type="text" v-model="form.description" />
             <input type="text" v-model="form.latitude" />
             <input type="text" v-model="form.longitude" />
-            <input  type="submit" class="btn" value="Update" />
+            <button  type="submit" class="btn" value="Update">Update</button>
         </form>
         </div>
       </div>
