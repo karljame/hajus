@@ -18,6 +18,9 @@
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </NavLink>
+                                <NavLink :href="route('blog.index')" :active="route().current('blog.index')">
+                                    Blog
+                                </NavLink>
                             </div>
                         </div>
 
@@ -88,6 +91,7 @@
                     <slot name="header" />
                 </div>
             </header>
+
             <!-- Page Content -->
             <main>
                 <slot />
@@ -99,8 +103,6 @@
 <script setup>
 import { inject, ref } from 'vue';
 import { Link } from '@inertiajs/inertia-vue3';
-
 const route = inject('route')
-
 const showingNavigationDropdown = ref(false);
 </script>
