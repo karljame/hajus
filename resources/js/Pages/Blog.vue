@@ -35,7 +35,7 @@
       <Comments :post="post" />
       <div class="flex gap-8" v-for="(comment, index) in post.comments" :key="index">
         <p>{{comment.comment}}</p>
-        <button @click.prevent="deleteComments(comment.id)" class="btn">Deletee</button>
+        <button @click.prevent="deleteComments(comment.id)" class="btn">Delete</button>
       </div>
     </Disclosure>
   </div>
@@ -46,14 +46,11 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { ChevronUpIcon } from "@heroicons/vue/solid";
 import { Inertia } from "@inertiajs/inertia";
 import { useForm } from "@inertiajs/inertia-vue3";
-
 const props = defineProps({
   posts: {
     type: Array,
     default: null,
   },
 });
-
 const deleteComments = (id) => Inertia.post(`/comment-delete/${id}`)
-
 </script>
