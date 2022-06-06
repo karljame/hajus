@@ -17,7 +17,7 @@ class WeatherController extends Controller
         if (Cache::has("weather")) {
             $data = Cache::get('weather');
         } else {
-            $response = Http::get("https://api.openweathermap.org/data/2.5/weather?lat={$lat}&lon={$lon}&units=metric&appid=7040a0b9ad7be771e70ba3509956f1f5" . config("services.weather.key"));
+            $response = Http::get("https://api.openweathermap.org/data/2.5/weather?lat={$lat}&lon={$lon}&units=metric&appid=" . config("services.weather.key"));
             Cache::put("weather", array("name" => $response["name"], "sys" => $response["sys"], "wind" => $response["wind"], "weather" => $response["weather"], "main" => $response["main"]), 150);
             $data = Cache::get("weather");
         }
